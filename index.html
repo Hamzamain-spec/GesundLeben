@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GesundLeben — Gesundheit & Wohlbefinden</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--white:#FFFFFF;--bg:#F0FAF7;--card:#FFFFFF;--border:#D1EDE6;--ink:#0F2D24;--mid:#1F4A3A;--muted:#5A7A6E;--light:#9ABFB2;--mint:#0DA678;--mint-lt:#E6F7F2;--rose:#E85070;--amber:#F5A623;--sky:#1A6BD0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink)}
+
+/* TOP BAR */
+.top-bar{background:var(--mint);padding:8px 36px;display:flex;justify-content:space-between;align-items:center}
+.top-bar-left{font-size:11px;color:rgba(255,255,255,0.8);font-weight:500;letter-spacing:0.3px}
+.top-bar-right{display:flex;gap:16px}
+.top-bar-right a{font-size:11px;color:rgba(255,255,255,0.75);text-decoration:none;font-weight:600}
+.top-bar-right a:hover{color:#fff}
+
+/* HEADER */
+header{background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 0 var(--border)}
+.header-inner{max-width:1180px;margin:0 auto;padding:0 36px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{text-decoration:none;display:flex;align-items:center;gap:12px}
+.logo-leaf{width:40px;height:40px;background:linear-gradient(135deg,var(--mint),#08805A);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.logo-name{font-family:'Lora',serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.3px}
+.logo-name span{color:var(--mint)}
+.logo-tagline{font-size:10px;color:var(--muted);font-weight:500;letter-spacing:0.5px;margin-top:1px;display:block}
+.header-nav{display:flex;align-items:center;gap:2px}
+.header-nav a{padding:8px 14px;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border-radius:8px;transition:all 0.2s}
+.header-nav a:hover{background:var(--mint-lt);color:var(--mint)}
+.header-cta{background:var(--mint);color:#fff;padding:9px 18px;font-size:12px;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s;margin-left:8px}
+.header-cta:hover{background:#08805A;transform:translateY(-1px)}
+
+/* HERO — pill + big headline style */
+.hero{background:linear-gradient(135deg,var(--ink) 0%,var(--mid) 60%,#0D3A2A 100%);padding:80px 36px;position:relative;overflow:hidden}
+.hero::before{content:'🌿';position:absolute;right:80px;top:40px;font-size:160px;opacity:0.06;line-height:1}
+.hero-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(13,166,120,0.2);border:1px solid rgba(13,166,120,0.3);padding:6px 14px;border-radius:100px;margin-bottom:22px}
+.hero-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--mint)}
+.hero-pill-text{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.65);font-weight:600}
+.hero h1{font-family:'Lora',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.06;margin-bottom:20px;letter-spacing:-0.5px}
+.hero h1 em{font-style:italic;color:var(--mint)}
+.hero-desc{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:32px;font-weight:300;max-width:440px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-mint{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:#fff;padding:13px 24px;text-decoration:none;font-weight:700;font-size:13px;border-radius:8px;transition:all 0.2s}
+.btn-mint:hover{background:#08805A;transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);padding:13px 20px;text-decoration:none;font-weight:600;font-size:13px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);transition:all 0.2s}
+.btn-outline:hover{background:rgba(255,255,255,0.14);color:#fff}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero-stat-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:18px;border-radius:10px}
+.hsc-icon{font-size:24px;margin-bottom:8px}
+.hsc-val{font-family:'Lora',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:3px}
+.hsc-val span{color:var(--mint)}
+.hsc-label{font-size:11px;color:rgba(255,255,255,0.4);font-weight:400}
+
+/* TOPIC CHIPS */
+.chips-wrap{max-width:1180px;margin:40px auto 0;padding:0 36px}
+.chips-inner{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--border);align-items:center}
+.chips-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.chip{background:var(--white);border:1px solid var(--border);color:var(--muted);font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.chip:hover{background:var(--mint-lt);color:var(--mint);border-color:var(--mint)}
+
+/* CONTENT */
+.content-wrap{max-width:1180px;margin:40px auto;padding:0 36px;display:grid;grid-template-columns:1fr 300px;gap:36px}
+
+/* CARD STYLES - alternating big + small */
+.posts-section{}
+.posts-section-head{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.psh-dot{width:10px;height:10px;border-radius:50%;background:var(--mint)}
+.psh-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.psh-line{flex:1;height:1px;background:var(--border)}
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.3s;margin-bottom:16px;display:grid;grid-template-columns:200px 1fr}
+.post-card:hover{box-shadow:0 8px 32px rgba(13,166,120,0.1);border-color:var(--mint);transform:translateX(2px)}
+.pc-thumb{min-height:130px;position:relative;overflow:hidden}
+.pc-thumb-bg{width:100%;height:100%;position:absolute;inset:0;transition:transform 0.5s}
+.post-card:hover .pc-thumb-bg{transform:scale(1.06)}
+.pc-body{padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.pc-cat{display:inline-flex;align-items:center;gap:5px;background:var(--mint-lt);color:var(--mint);font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;width:fit-content}
+.pc-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:8px}
+.pc-excerpt{font-size:13px;line-height:1.65;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
+.pc-footer{display:flex;align-items:center;justify-content:space-between}
+.pc-author{font-size:12px;font-weight:600;color:var(--muted)}
+.pc-date{font-size:11px;color:var(--light)}
+.pc-link{font-size:12px;font-weight:700;color:var(--mint);text-decoration:none}
+.pc-link:hover{color:var(--ink)}
+.bg1{background:linear-gradient(135deg,#0DA678,#08805A)}
+.bg2{background:linear-gradient(135deg,#0F2D24,#1F4A3A)}
+.bg3{background:linear-gradient(135deg,#E85070,#A03050)}
+.bg4{background:linear-gradient(135deg,#F5A623,#B07010)}
+.bg5{background:linear-gradient(135deg,#1A6BD0,#0A4090)}
+.bg6{background:linear-gradient(135deg,#6A3A9A,#3A1A6A)}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.widget{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.widget-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.widget-dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.widget-title{font-size:12px;font-weight:700;color:var(--ink);letter-spacing:0.3px}
+.widget-body{padding:16px 18px}
+.w-item{padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.w-item:last-child{border-bottom:none;padding-bottom:0}
+.w-item:first-child{padding-top:0}
+.wi-num{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--border);flex-shrink:0;line-height:1}
+.wi-cat{font-size:9px;font-weight:700;color:var(--mint);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px}
+.wi-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.35;text-decoration:none;display:block}
+.wi-title:hover{color:var(--mint)}
+.wi-date{font-size:11px;color:var(--light);margin-top:3px}
+.wellness-box{background:linear-gradient(135deg,var(--mint),#08805A);padding:20px;border-radius:10px;text-align:center}
+.wb-icon{font-size:32px;margin-bottom:10px}
+.wb-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
+.wb-text{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;font-weight:300}
+.empty-state{text-align:center;padding:60px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+.empty-state h3{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.empty-state p{font-size:14px;color:var(--muted)}
+footer{background:var(--ink);margin-top:60px}
+.footer-inner{max-width:1180px;margin:0 auto;padding:48px 36px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
+.footer-logo{font-family:'Lora',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px}
+.footer-logo span{color:var(--mint)}
+.footer-inner>div>p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.35);font-weight:300}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
+.footer-col a{display:block;color:rgba(255,255,255,0.4);text-decoration:none;font-size:13px;margin-bottom:8px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);max-width:1180px;margin:0 auto;padding:18px 36px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-bottom a{color:rgba(255,255,255,0.25);text-decoration:none;margin-left:14px}
+.footer-bottom a:hover{color:var(--mint)}
+.admin-link{position:fixed;bottom:20px;right:20px;background:var(--mint);color:#fff;padding:10px 20px;font-size:11px;text-decoration:none;opacity:0.4;transition:opacity 0.2s;font-weight:700;border-radius:8px;letter-spacing:0.5px}
+.admin-link:hover{opacity:1}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="top-bar-left">🌿 GesundLeben — Dein Ratgeber für Gesundheit & Wohlbefinden</div>
+  <div class="top-bar-right"><a href="#">Newsletter</a><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+</div>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-leaf">🌿</div>
+      <div><div class="logo-name">Gesund<span>Leben</span></div><div class="logo-tagline">Gesundheit · Ernährung · Bewegung · Wohlbefinden</div></div>
+    </a>
+    <div class="header-nav">
+      <a href="index.html">Gesundheit</a>
+      <a href="index.html">Ernährung</a>
+      <a href="index.html">Bewegung</a>
+      <a href="index.html">Mental</a>
+      <a href="index.html">Ratgeber</a>
+      <a href="index.html" class="header-cta">Newsletter →</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill"><div class="hero-pill-dot"></div><div class="hero-pill-text">Wellness-Magazin</div></div>
+      <h1>Besser leben,<br>jeden <em>Tag.</em></h1>
+      <div class="hero-desc">Evidenzbasierte Ratgeber zu Gesundheit, Ernährung, Bewegung und mentalem Wohlbefinden — für ein erfülltes Leben.</div>
+      <div class="hero-btns"><a href="#articles" class="btn-mint">Artikel entdecken →</a><a href="index.html" class="btn-outline">Über uns</a></div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-stat-card"><div class="hsc-icon">🥗</div><div class="hsc-val">100<span>%</span></div><div class="hsc-label">Evidenzbasiert</div></div>
+      <div class="hero-stat-card"><div class="hsc-icon">💪</div><div class="hsc-val">Tägl.<span>+</span></div><div class="hsc-label">Neue Ratgeber</div></div>
+      <div class="hero-stat-card"><div class="hsc-icon">🧘</div><div class="hsc-val">Mind<span>&</span></div><div class="hsc-label">Body Balance</div></div>
+      <div class="hero-stat-card"><div class="hsc-icon">🌿</div><div class="hsc-val">DE<span>/AT</span></div><div class="hsc-label">DACH Region</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="chips-wrap">
+  <div class="chips-inner">
+    <span class="chips-label">Themen:</span>
+    <a href="index.html" class="chip">Alle</a>
+    <a href="index.html" class="chip">Ernährung</a>
+    <a href="index.html" class="chip">Bewegung & Sport</a>
+    <a href="index.html" class="chip">Mentale Gesundheit</a>
+    <a href="index.html" class="chip">Schlaf</a>
+    <a href="index.html" class="chip">Gewichtsmanagement</a>
+    <a href="index.html" class="chip">Naturheilkunde</a>
+    <a href="index.html" class="chip">Prävention</a>
+  </div>
+</div>
+
+<div class="content-wrap" id="articles">
+  <div class="posts-section">
+    <div class="posts-section-head"><div class="psh-dot"></div><div class="psh-title">Aktuelle Ratgeber</div><div class="psh-line"></div></div>
+    <div id="posts-list">
+      <div class="empty-state"><h3>Artikel werden geladen...</h3><p>Bitte warten Sie einen Moment.</p></div>
+    </div>
+  </div>
+  <aside class="sidebar">
+    <div class="wellness-box"><div class="wb-icon">🌿</div><div class="wb-title">Tipp des Tages</div><div class="wb-text">Trinke täglich mindestens 2 Liter Wasser — dein Körper und dein Geist danken es dir.</div></div>
+    <div class="widget">
+      <div class="widget-head"><div class="widget-dot"></div><div class="widget-title">Beliebte Artikel</div></div>
+      <div class="widget-body"><div id="sidebar-pop"></div></div>
+    </div>
+    <div class="widget">
+      <div class="widget-head"><div class="widget-dot" style="background:var(--rose)"></div><div class="widget-title">Themen</div></div>
+      <div class="widget-body">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <a href="#" style="background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.background='var(--mint-lt)';this.style.color='var(--mint)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--muted)'">Ernährung</a>
+          <a href="#" style="background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;text-decoration:none" onmouseover="this.style.background='var(--mint-lt)';this.style.color='var(--mint)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--muted)'">Sport</a>
+          <a href="#" style="background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;text-decoration:none" onmouseover="this.style.background='var(--mint-lt)';this.style.color='var(--mint)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--muted)'">Schlaf</a>
+          <a href="#" style="background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;text-decoration:none" onmouseover="this.style.background='var(--mint-lt)';this.style.color='var(--mint)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--muted)'">Mental</a>
+          <a href="#" style="background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;text-decoration:none" onmouseover="this.style.background='var(--mint-lt)';this.style.color='var(--mint)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--muted)'">Prävention</a>
+          <a href="#" style="background:var(--bg);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;text-decoration:none" onmouseover="this.style.background='var(--mint-lt)';this.style.color='var(--mint)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--muted)'">Naturheilkunde</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-logo">Gesund<span>Leben</span></div><p>GesundLeben bietet evidenzbasierte Ratgeber rund um Gesundheit, Ernährung, Bewegung und mentales Wohlbefinden für den deutschsprachigen Raum.</p></div>
+    <div class="footer-col"><h4>Themen</h4><a href="#">Ernährung</a><a href="#">Bewegung</a><a href="#">Schlaf</a><a href="#">Mental</a></div>
+    <div class="footer-col"><h4>Info</h4><a href="#">Über uns</a><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">Kontakt</a></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 GesundLeben — Gesundheit & Wohlbefinden</span><div><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</footer>
+<a href="admin.html" class="admin-link">⚙ Admin</a>
+
+<script>
+const bgs = ['bg1','bg2','bg3','bg4','bg5','bg6'];
+const SITE_NAME = 'gesundleben';
+const GIST_ID = '42ea11087f40fdba423f8eb0f575ac96'; // Same Gist for all sites!
+
+async function loadPosts() {
+  const pl = document.getElementById('posts-list');
+  const sp = document.getElementById('sidebar-pop');
+  
+  try {
+    console.log('Fetching from Gist ID:', GIST_ID);
+    
+    const rawUrl = `https://gist.githubusercontent.com/Hamzamain-spec/${GIST_ID}/raw/posts.json`;
+    const response = await fetch(rawUrl);
+    
+    if (response.ok) {
+      const allPosts = await response.json();
+      console.log('All posts from Gist:', allPosts);
+      
+      // Filter by site name
+      const sitePosts = allPosts.filter(post => post.site === SITE_NAME);
+      console.log(`Found ${sitePosts.length} posts for site: ${SITE_NAME}`);
+      
+      // Sort by date (newest first)
+      const sortedPosts = [...sitePosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      if (sortedPosts.length === 0) {
+        pl.innerHTML = '<div class="empty-state"><h3>Noch keine Artikel</h3><p>Erstelle deinen ersten Beitrag im Admin-Bereich.</p></div>';
+        sp.innerHTML = '';
+        return;
+      }
+      
+      // Posts list
+      pl.innerHTML = '';
+      sortedPosts.forEach((p, i) => {
+        const date = new Date(p.date).toLocaleDateString('de-DE', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        const exc = p.content.replace(/<[^>]+>/g, '').substring(0, 110) + '...';
+        
+        const card = document.createElement('div');
+        card.className = 'post-card';
+        card.onclick = () => location.href = `post.html?id=${p.id}`;
+        
+        card.innerHTML = `
+          <div class="pc-thumb">
+            <div class="pc-thumb-bg ${bgs[i % bgs.length]}"></div>
+          </div>
+          <div class="pc-body">
+            <div>
+              <div class="pc-cat">🌿 ${p.category || 'Gesundheit'}</div>
+              <div class="pc-title">${p.title}</div>
+              <div class="pc-excerpt">${exc}</div>
+            </div>
+            <div class="pc-footer">
+              <div>
+                <div class="pc-author">${p.author || 'Redaktion'}</div>
+                <div class="pc-date">${date}</div>
+              </div>
+              <a class="pc-link" href="post.html?id=${p.id}">Lesen →</a>
+            </div>
+          </div>
+        `;
+        
+        pl.appendChild(card);
+      });
+      
+      // Sidebar popular
+      sp.innerHTML = '';
+      sortedPosts.slice(0, 4).forEach((p, i) => {
+        const item = document.createElement('div');
+        item.className = 'w-item';
+        item.onclick = () => location.href = `post.html?id=${p.id}`;
+        
+        item.innerHTML = `
+          <div class="wi-num">0${i + 1}</div>
+          <div>
+            <div class="wi-cat">${p.category || 'Gesundheit'}</div>
+            <a class="wi-title" href="post.html?id=${p.id}">${p.title}</a>
+            <div class="wi-date">${new Date(p.date).toLocaleDateString('de-DE')}</div>
+          </div>
+        `;
+        
+        sp.appendChild(item);
+      });
+      
+      console.log(`Displayed ${sortedPosts.length} posts`);
+    } else {
+      console.error('Failed to fetch from Gist:', response.status);
+      pl.innerHTML = '<div class="empty-state"><h3>Fehler beim Laden</h3><p>Bitte später erneut versuchen.</p></div>';
+    }
+  } catch (error) {
+    console.error('Error loading posts:', error);
+    pl.innerHTML = '<div class="empty-state"><h3>Fehler</h3><p>' + error.message + '</p></div>';
+  }
+}
+
+// Load posts when page loads
+loadPosts();
+
+// Auto-refresh every 30 seconds
+setInterval(loadPosts, 30000);
+</script>
+</body>
+</html>
